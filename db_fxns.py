@@ -5,33 +5,33 @@ c = conn.cursor()
 
 # Functions
 def create_table():
-	c.execute('CREATE TABLE IF NOT EXISTS inscricao(nome TEXT,telefone TEXT,nascimento DATE,endereco TEXT,regiao TEXT,cep TEXT,email TEXT,facebook TEXT,instagram TEXT,sugestao TEXT)')
+	c.execute('CREATE TABLE IF NOT EXISTS inscricao(nome TEXT,telefone TEXT,niver_dia INT,niver_mes TEXT,regiao TEXT,email TEXT,facebook TEXT,instagram TEXT,msg TEXT)')
 
-def add_data(nome,telefone,nascimento,endereco,regiao,cep,email,facebook,instagram,sugestao):
-	c.execute('INSERT INTO inscricao(nome,telefone,nascimento,endereco,regiao,cep,email,facebook,instagram,sugestao) VALUES (?,?,?,?,?,?,?,?,?,?)',(nome,telefone,nascimento,endereco,regiao,cep,email,facebook,instagram,sugestao))
+def add_data(nome,telefone, niver_dia, niver_mes, regiao,email,facebook,instagram,msg):
+	c.execute('INSERT INTO inscricao(nome,telefone,niver_dia,niver_mes,regiao,email,facebook,instagram,msg) VALUES (?,?,?,?,?,?,?,?,?)',(nome,telefone,niver_dia,niver_mes,regiao,email,facebook,instagram,msg))
 	conn.commit()
 
 def view_all_notes():
-	c.execute('SELECT * FROM blogtable')
+	c.execute('SELECT * FROM inscricao')
 	data = c.fetchall()
 	return data
 
 def view_all_titles():
-	c.execute('SELECT DISTINCT title FROM blogtable')
+	c.execute('SELECT DISTINCT nome FROM inscricao')
 	data = c.fetchall()
 	return data
 
 
-def get_blog_by_title(title):
+def get_inscricao_by_nome(nome):
 	c.execute('SELECT * FROM inscricao WHERE nome="{}"'.format(nome))
 	data = c.fetchall()
 	return data
 
-def get_blog_by_author(author):
-	c.execute('SELECT * FROM blogtable WHERE author="{}"'.format(author))
+def get_inscricao_by_telefone(telefone):
+	c.execute('SELECT * FROM inscricao WHERE telefone="{}"'.format(telefone))
 	data = c.fetchall()
 	return data
 
 def delete_data(title):
-	c.execute('DELETE FROM blogtable WHERE title="{}"'.format(title))
+	c.execute('DELETE FROM inscricao WHERE nome="{}"'.format(nome))
 	conn.commit()
