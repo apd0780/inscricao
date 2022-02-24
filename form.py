@@ -3,7 +3,6 @@ import pandas as pd
 import validators
 from datetime import date
 from validate_email import validate_email
-import pyautogui
 
 # # NLP pkgs
 # import spacy
