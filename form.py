@@ -71,7 +71,7 @@ def main():
     		<br/>
     		"""
     st.image('./avatar.png', width=180)
-    st.markdown(html_temp.format('royalblue', 'white'), unsafe_allow_html=True)
+    st.markdown(html_temp.format('#DCDCDC', 'dark'), unsafe_allow_html=True)
 
     criar_tabela()
 
@@ -160,7 +160,7 @@ def main():
                                "muito obrigado! Professor Ricardo Dantas".format(nome))
 
                     if st.button("Nova Inscrição"):
-                        pyautogui.hotkey("ctrl", "F5")
+                        main()
 
 if __name__ == '__main__':
     main()
